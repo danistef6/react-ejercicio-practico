@@ -1,13 +1,8 @@
-export const Types = {
-    ADD_REQUEST: 'comics/ADD_REQUEST',
-    ADD_SUCCESS: 'comics/ADD_SUCCESS',
-    ADD_FAILURE: 'comics/ADD_FAILURE',
-};
-
+import {Types} from "../types";
 export const Creators = {
-    addComicsRequest: () => ({
+    addComicsRequest: name => ({
         type: Types.ADD_REQUEST,
-        payload: {},
+        payload: { name},
     }),
 
     addComicsSuccess: data => ({

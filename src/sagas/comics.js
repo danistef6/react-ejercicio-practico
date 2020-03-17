@@ -5,7 +5,7 @@ import { Creators as ComicActions } from '../actions/actions';
 
 export function* addCommic() {
     const {
-        comics: { offset, limit },
+        comics: { offset, limit , name},
     } = yield select();
     const teste = yield select();
     try {
@@ -13,7 +13,7 @@ export function* addCommic() {
             data: { data },
         } = yield call(
             api.get,
-            `/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&offset=${offset}&limit=${limit}`,
+            `/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&offset=${offset}&limit=${limit}&nameStartsWith=${name}`,
         );
         yield put(ComicActions.addComicsSuccess(data));
     } catch (error) {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Creators as ComicActions } from '../../actions/actions';
 import CardItem from './components/CardItem';
 import { Container } from './styles';
 
@@ -12,16 +10,6 @@ class List extends Component {
         addComicsRequest: PropTypes.func.isRequired,
         comics: PropTypes.shape({}).isRequired,
     };
-
-    componentDidMount() {
-        this.loadComics();
-    }
-
-    loadComics = () => {
-        const { addComicsRequest } = this.props;
-        addComicsRequest();
-    };
-
     render() {
         const {
             comics: { data },
@@ -60,14 +48,6 @@ const mapStateToProps = state => ({
     comics: state.comics,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-    {
-        ...ComicActions,
-    },
-    dispatch,
-);
-
 export default connect(
     mapStateToProps,
-    mapDispatchToProps,
 )(List);

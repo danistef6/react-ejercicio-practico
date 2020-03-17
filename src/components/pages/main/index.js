@@ -1,7 +1,7 @@
 import React from 'react';
-import List from '../../components/List';
-import Header from '../../components/Header';
-import FilterBar from '../../components/FilterBar';
+import List from '../../List';
+import Header from '../../Header';
+import FilterBar from '../../FilterBar';
 
 const Main = () => (
     <>
