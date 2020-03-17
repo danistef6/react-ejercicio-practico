@@ -1,17 +1,16 @@
 import {Types} from "../types";
-export const Creators = {
-    addComicsRequest: name => ({
-        type: Types.ADD_REQUEST,
-        payload: { name},
-    }),
 
-    addComicsSuccess: data => ({
-        type: Types.ADD_SUCCESS,
-        payload: { data },
-    }),
+export const addComicsRequest = payload => ({
+    type: Types.ADD_REQUEST,
+    payload,
+  })
 
-    addComicsFailure: error => ({
-        type: Types.ADD_FAILURE,
-        payload: { error },
-    }),
-};
+  export const addComicsSuccess = payload => ({
+    type: Types.ADD_SUCCESS,
+    payload,
+  })
+
+  export const addComicsFailure = payload => ({
+    type: Types.ADD_FAILURE,
+    payload,
+  })

@@ -1,7 +1,5 @@
 import React from 'react';
 import {Formik, Field} from 'formik';
-import { useDispatch } from 'react-redux';
-import { Creators as ComicActions } from '../../actions/actions';
 
 const labelStyle = {'color': 'red'}
 const divStyle = {'margin':'0 auto',
@@ -11,14 +9,14 @@ const divStyle = {'margin':'0 auto',
                   'justify-content': 'space-between',
                   'align-items': 'center'}
 
-const FilterBar = () =>{
-    const dispatch = useDispatch();
+const FilterBar = ({handleSearchComics}) =>{
     return(
     <div>
         <Formik
         initialValues = {{ buscar: ''}}
-        onSubmit={(values, {setSubmitting}) => {
-           alert(JSON.stringify(values,null,2));
+        onSubmit={(values, {}) => {
+            console.log('consulto',values);
+            handleSearchComics(values.buscar);
         }}
         >
             {({
@@ -33,7 +31,7 @@ const FilterBar = () =>{
                         name="buscar"
                         value={values.buscar}
                         />
-                        <button type="submit" onClick= {()=>dispatch(ComicActions.addComicsRequest(values.buscar))}>
+                        <button type="submit">               
                         Buscar
                         </button>
                     </div>

@@ -10,31 +10,21 @@ class List extends Component {
         addComicsRequest: PropTypes.func.isRequired,
         comics: PropTypes.shape({}).isRequired,
     };
+    constructor(props){super(props)};
     render() {
         const {
             comics: { data },
         } = this.props;
+        console.log(this.props);
         return (
             <>
                 <Container>
                     {data.length ? (
-                        <InfiniteScroll
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                flexWrap: 'wrap',
-                                justifyContent: 'space-around',
-                                margin: '40px',
-                            }}
-                            dataLength={data.length}
-                            next={() => this.loadComics()}
-                            hasMore
-                            loader={<h4 style={{ color: 'white' }}>Loading...</h4>}
-                        >
+                        <div>
                             {data.map(item => (
                                     <CardItem data={item} />
                             ))}
-                        </InfiniteScroll>
+                        </div>
                     ) : (
                         <h1 style={{ color: 'white' }}>Cargando....</h1>
                     )}

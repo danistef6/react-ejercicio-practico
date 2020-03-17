@@ -1,26 +1,35 @@
 import {Types} from "../types";
+import immutable from "seamless-immutable";
 
-const INITIAL_STATE = {
+const INITIAL_STATE = immutable({
     data: [],
     limit: 50,
     offset: 0,
-    name: " "
-};
+    name: "",
+    loading: false,
+    error: "",
+});
 
 export default function reducers(state = INITIAL_STATE, action) {
     switch (action.type) {
         case Types.ADD_REQUEST:
-            return { ...state,
-                     name: action.payload.name};
+return state.merge({
+        error: '',
+        fetching: true,
+      })
 
         case Types.ADD_SUCCESS:
-            return {
-                ...state,
-                offset: state.offset + state.limit,
-                data: [...state.data, ...action.payload.data.results],
-            };
+            console.log("redux1111 ",action.payload.data.data.results);
+            return state.merge({
+                error: '',
+                fetching: false,
+                data:action.payload.data.data.results
+              })
         case Types.ADD_FAILURE:
-            return { ...state };
+            return state.merge({
+                error: 'error',
+                fetching: false
+              })
 
         default:
             return state;
