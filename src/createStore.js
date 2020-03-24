@@ -4,17 +4,10 @@ import reducers from './reducers/index';
 import sagas from './sagas/sagas';
 
 const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const sagaMonitor = process.env.NODE_ENV === 'development' ? console.tron.createSagaMonitor() : null;
-const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
-
+const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];
 
-const composer = process.env.NODE_ENV === 'development'
-    ? enhancedCompose(
-        applyMiddleware(...middlewares),
-        console.tron.createEnhancer(),
-    )
-    : enhancedCompose(applyMiddleware(...middlewares));
+const composer = enhancedCompose(applyMiddleware(...middlewares));
 
 const store = createStore(reducers, composer);
 

@@ -14,3 +14,8 @@ export const addComicsRequest = payload => ({
     type: Types.ADD_FAILURE,
     payload,
   })
+
+  export const showNewTab = payload => ({
+    type: Types.SHOW,
+    payload,
+  })

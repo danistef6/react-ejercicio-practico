@@ -10,22 +10,29 @@ const INITIAL_STATE = immutable({
     error: "",
 });
 
-export default function reducers(state = INITIAL_STATE, action) {
+export default function reducersDetail(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case Types.ADD_REQUEST:
+        case Types.ADD_REQUEST_D:
         return state.merge({
         error: '',
         fetching: true,
       })
 
-        case Types.ADD_SUCCESS:
-            console.log("redux1111 ",action.payload.data.data.results);
+        case Types.ADD_SUCCESS_D:
+            console.log("redux7777 ",action.payload.data.data.results[0].thumbnail.path); 
+            let result = action.payload.data.data.results[0]
+            let details = {}
+            details.id = result.id
+            details.name = result.name
+            details.thumbnail = result.thumbnail.path 
+            details.extension = result.thumbnail.extension
+
             return state.merge({
                 error: '',
                 fetching: false,
-                data:action.payload.data.data.results
+                data: details
               })
-        case Types.ADD_FAILURE:
+        case Types.ADD_FAILURE_D:
             return state.merge({
                 error: 'error',
                 fetching: false
