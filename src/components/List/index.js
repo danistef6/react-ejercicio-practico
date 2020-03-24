@@ -13,11 +13,22 @@ class List extends Component {
     };
     render() {
         const {
-            comics: { data },
+            comics: { data, fetching },
         } = this.props;
         console.log("Estas son las props",this.props);
+        console.log("Respuesta de fetching",fetching);
         return (
             <>
+            {fetching===true ? 
+                <CardActionArea>
+                    <CardMedia
+                        component="img"
+                        alt="Contemplative Reptile"
+                        image={'https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-32.gif'}
+                        title={data.resourceURI}
+                    />
+                </CardActionArea>: null
+            }
                 <Container>
                     {data.length ? (
                         <div>
