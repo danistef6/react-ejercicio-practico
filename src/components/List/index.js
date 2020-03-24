@@ -6,15 +6,11 @@ import { Container } from './styles';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Link } from "react-router-dom";
-import { showNewTab} from '../../actions/actions';
 
 class List extends Component {
     static propTypes = {
         comics: PropTypes.shape({}).isRequired,
     };
-    openNewTab = (id) => {
-        this.props.dispatch(showNewTab(id));
-      };
     render() {
         const {
             comics: { data },
@@ -26,7 +22,7 @@ class List extends Component {
                     {data.length ? (
                         <div>
                             {data.map(item => (
-                                    <Link to={`/Detail/${item.id}`} target="_blank" onClick={() => this.openNewTab(item.id)} key={item.id}>
+                                    <Link to={`/Detail/${item.id}`} target="_blank" key={item.id}>
                                     <CardItem data={item} />
                                     </Link>
                             ))}
