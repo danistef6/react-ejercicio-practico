@@ -29,12 +29,8 @@ const FilterBar = ({handleSearchComics}) =>{
         <Formik
         initialValues = {{ buscar: ''}}
         onSubmit={(values) => {
-            const timeOut = setTimeout(() => {
-                console.log(values);
+            console.log(values);
             handleSearchComics(values.buscar);
-    
-                clearTimeout(timeOut);
-              }, 1000);
         }}
         >
             {({
