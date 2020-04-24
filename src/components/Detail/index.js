@@ -13,6 +13,8 @@ const divStyle = {'margin':'0 auto',
                   'justify-content': 'space-between',
                   'align-items': 'center',
                   'flex-direction': 'column'}
+                  const labelStyleeee = {'color': 'red',   	
+                    'font': 'sans-serif'}
 
 const DetailPage = ({handleSearchComics,details}) =>{
 
@@ -42,6 +44,7 @@ const DetailPage = ({handleSearchComics,details}) =>{
                     image={`${details.data.thumbnail}.${details.data.extension}`}
                     title={details.data.resourceURI}
                 />
+                <label style={labelStyleeee}>{details.data.description} </label>
                     </div>
                 </form>
             )}          

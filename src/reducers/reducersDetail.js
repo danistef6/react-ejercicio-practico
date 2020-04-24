@@ -24,6 +24,7 @@ export default function reducersDetail(state = INITIAL_STATE, action) {
             let details = {}
             details.id = result.id
             details.name = result.name
+            details.description = result.description
             details.thumbnail = result.thumbnail.path 
             details.extension = result.thumbnail.extension
 
